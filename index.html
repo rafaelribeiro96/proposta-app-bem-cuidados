@@ -211,7 +211,7 @@
       </div>
 
       <!-- COMPARATIVE HIGH IMPACT GRID -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         <!-- CARD WEBAPP (RECOMMENDED) -->
         <div class="bg-white p-8 rounded-2xl border-2 border-brand-primary/40 shadow-md relative flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-brand-primary">
@@ -570,106 +570,98 @@
     <!-- ============================================== -->
     <!-- TAB 3: IMERSÃO APP NATIVO / LOJAS -->
     <!-- ============================================== -->
-    <section id="panel-nativo" class="tab-content space-y-12 animate-fade-in" role="tabpanel" aria-labelledby="tab-btn-nativo">
+    <section id="panel-nativo" class="tab-content space-y-8 animate-fade-in" role="tabpanel" aria-labelledby="tab-btn-nativo">
       
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Grid layout: 3 Balanced Columns on Desktop -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
         
-        <!-- Left: Requirements & Legal -->
-        <div class="lg:col-span-2 space-y-8">
+        <!-- Column 1: Burocracia de Contas (Apple & Google) -->
+        <!-- order-2 on mobile so that Resumo Financeiro goes first, lg:order-none on desktop -->
+        <div class="space-y-6 flex flex-col order-2 lg:order-none">
+          <div class="text-xs font-bold text-brand-primary uppercase tracking-wider mb-1 flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">corporate_fare</span>
+            Burocracia das Lojas
+          </div>
           
-          <!-- Burocracia Corporativa -->
-          <div class="bg-white p-8 rounded-2xl border border-brand-borderSubtle shadow-sm space-y-6">
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-brand-primary text-3xl">corporate_fare</span>
-              <h3 class="text-2xl font-extrabold text-brand-textDark">Burocracia Corporativa das Lojas</h3>
-            </div>
-            
-            <p class="text-brand-textMuted text-sm">
-              Publicar aplicativos corporativos nas lojas exige o cumprimento de protocolos severos de homologação internacional:
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
-              <!-- Apple Box -->
-              <div class="p-6 border border-brand-borderSubtle rounded-2xl bg-gray-50/50 flex flex-col justify-between">
-                <div class="space-y-3">
-                  <div class="flex items-center gap-3 text-brand-textDark">
-                    <span class="material-symbols-outlined text-2xl font-bold">brand_family</span>
-                    <h4 class="font-bold">Conta Apple Developer</h4>
-                  </div>
-                  <ul class="text-xs text-brand-textMuted space-y-2.5 list-none leading-relaxed">
-                    <li class="flex items-start gap-1.5">
-                      <span class="text-brand-primary">•</span>
-                      <span>Obrigatório CNPJ ativo de empresa.</span>
-                    </li>
-                    <li class="flex items-start gap-1.5">
-                      <span class="text-brand-primary">•</span>
-                      <span>Cadastro no sistema D-U-N-S (Pode levar de 7 a 15 dias úteis para emissão).</span>
-                    </li>
-                    <li class="p-3 bg-rose-50 border border-rose-150 rounded-xl text-rose-800 text-[11px] font-medium flex gap-2 items-start mt-2 shadow-sm">
-                      <span class="material-symbols-outlined text-rose-500 text-lg shrink-0 mt-0.5">warning</span>
-                      <div>
-                        <span class="font-bold text-rose-950 block mb-0.5">Anuidade Obrigatória</span>
-                        <strong>US$ 99,00/ano</strong> (custo recorrente obrigatório em dólar) para manter o app ativo na App Store de iPhones.
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+          <!-- Apple Box -->
+          <div class="p-6 border border-brand-borderSubtle rounded-2xl bg-white flex flex-col justify-between shadow-sm flex-grow">
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-brand-textDark">
+                <span class="material-symbols-outlined text-2xl font-bold text-slate-700">brand_family</span>
+                <h4 class="font-bold text-sm">Conta Apple Developer</h4>
               </div>
-
-              <!-- Google Box -->
-              <div class="p-6 border border-brand-borderSubtle rounded-2xl bg-gray-50/50 flex flex-col justify-between">
-                <div class="space-y-3">
-                  <div class="flex items-center gap-3 text-brand-textDark">
-                    <span class="material-symbols-outlined text-2xl font-bold">android</span>
-                    <h4 class="font-bold">Conta Google Play</h4>
+              <ul class="text-[11px] text-brand-textMuted space-y-2 list-none leading-relaxed">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-brand-primary font-bold">•</span>
+                  <span>Obrigatório CNPJ ativo de empresa.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-brand-primary font-bold">•</span>
+                  <span>Cadastro no sistema D-U-N-S (Pode levar de 7 a 15 dias úteis para emissão).</span>
+                </li>
+                <li class="p-3 bg-rose-50 border border-rose-150 rounded-xl text-rose-800 text-[10px] font-medium flex gap-2 items-start mt-2 shadow-sm">
+                  <span class="material-symbols-outlined text-rose-500 text-base shrink-0 mt-0.5">warning</span>
+                  <div>
+                    <span class="font-bold text-rose-950 block mb-0.5">Anuidade Apple</span>
+                    <strong>US$ 99,00/ano</strong> (custo recorrente em dólar) para manter o app ativo na App Store de iPhones.
                   </div>
-                  <ul class="text-xs text-brand-textMuted space-y-2 list-disc list-inside leading-relaxed">
-                    <li>Verificação legal do Contrato Social da empresa e representantes legais.</li>
-                    <li>Taxa única de abertura de conta de desenvolvedor de <strong>US$ 25,00</strong>.</li>
-                    <li>Exigência recente de homologação obrigatória com testes fechados de 20 usuários convidados antes de liberar produção.</li>
-                  </ul>
-                </div>
-              </div>
-
+                </li>
+              </ul>
             </div>
+          </div>
+
+          <!-- Google Box -->
+          <div class="p-6 border border-brand-borderSubtle rounded-2xl bg-white flex flex-col justify-between shadow-sm flex-grow">
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-brand-textDark">
+                <span class="material-symbols-outlined text-2xl font-bold text-teal-600">android</span>
+                <h4 class="font-bold text-sm">Conta Google Play</h4>
+              </div>
+              <ul class="text-[11px] text-brand-textMuted space-y-2 list-disc list-inside leading-relaxed">
+                <li>Verificação legal do Contrato Social da empresa e representantes legais.</li>
+                <li>Taxa única de abertura de conta de desenvolvedor de <strong>US$ 25,00</strong>.</li>
+                <li>Exigência de homologação com testes fechados de 20 usuários por 14 dias antes de liberar produção.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Aspectos Jurídicos e Prazos (LGPD & Timeline) -->
+        <!-- order-3 on mobile, lg:order-none on desktop -->
+        <div class="space-y-6 flex flex-col order-3 lg:order-none">
+          <div class="text-xs font-bold text-brand-primary uppercase tracking-wider mb-1 flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">gavel</span>
+            Conformidade &amp; Prazos
           </div>
 
           <!-- Obrigatoriedade Jurídica LGPD -->
-          <div class="bg-rose-50/60 p-8 rounded-2xl border border-rose-200/50 flex gap-4 md:gap-6 shadow-sm shadow-rose-900/5">
-            <div class="w-12 h-12 rounded-full bg-rose-500 text-white flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-2xl font-bold">gavel</span>
-            </div>
-            <div class="space-y-2">
-              <h4 class="font-bold text-rose-950 text-lg">Obrigatoriedade Jurídica de Privacidade (LGPD)</h4>
-              <p class="text-sm text-rose-900/80 leading-relaxed">
-                Por se tratar de uma plataforma que armazena dados de <strong>extrema sensibilidade</strong> (dados de saúde de idosos e crianças, registros fotográficos médicos e geolocalização contínua), a Apple e o Google exigem estritamente um site público com links explícitos para **Termos de Uso** e **Políticas de Privacidade** em total conformidade com a LGPD. Não é permitido sequer enviar o código do app nativo para revisão sem que essas diretrizes estejam online.
+          <div class="bg-rose-50/60 p-6 rounded-2xl border border-rose-200/50 flex flex-col justify-between shadow-sm shadow-rose-900/5">
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-rose-500 text-white flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-xl font-bold">gavel</span>
+                </div>
+                <h4 class="font-bold text-rose-950 text-sm leading-snug">Privacidade (LGPD)</h4>
+              </div>
+              <p class="text-[11px] text-rose-900/80 leading-relaxed">
+                Por se tratar de uma plataforma que armazena dados de <strong>extrema sensibilidade</strong> (dados de saúde de idosos e crianças, registros fotográficos médicos e geolocalização contínua), a Apple e o Google exigem estritamente um site público com links explícitos para <strong>Termos de Uso</strong> e <strong>Políticas de Privacidade</strong> em total conformidade com a LGPD. Não é permitido enviar o código do app nativo para revisão sem que essas diretrizes estejam online.
               </p>
             </div>
           </div>
 
-        </div>
-
-        <!-- Right: Time To Market Approval Timeline & Financial Summary -->
-        <div class="space-y-8">
-          
           <!-- Timeline Card -->
-          <div class="bg-white p-8 rounded-2xl border border-brand-borderSubtle shadow-sm flex flex-col justify-between">
-            <div class="space-y-6">
-              <h3 class="text-xl font-bold text-brand-textDark">Linha do Tempo de Aprovação</h3>
-              <p class="text-xs text-brand-textMuted leading-relaxed">
-                O fluxo tradicional de liberação nas lojas, após a codificação terminar, segue estes passos rigorosos:
-              </p>
+          <div class="bg-white p-6 rounded-2xl border border-brand-borderSubtle shadow-sm flex flex-col justify-between flex-grow">
+            <div class="space-y-4">
+              <h3 class="text-sm font-bold text-brand-textDark">Linha do Tempo de Aprovação</h3>
               
               <!-- Timeline steps -->
-              <div class="relative pl-6 border-l-2 border-brand-primaryLight space-y-8 py-2">
-                
+              <div class="relative pl-6 border-l-2 border-brand-primaryLight space-y-4 py-1">
                 <!-- Timeline step 1 -->
                 <div class="relative">
                   <div class="absolute -left-[31px] top-0.5 w-3.5 h-3.5 rounded-full bg-brand-primary ring-4 ring-brand-primaryLight"></div>
                   <div class="space-y-1">
-                    <h5 class="text-xs font-bold text-brand-primary uppercase tracking-wider">Abertura de Credenciais</h5>
-                    <p class="text-[11px] text-brand-textMuted leading-relaxed">Emissão do número D-U-N-S internacional legal para a empresa do contratante (7 a 15 dias úteis).</p>
+                    <h5 class="text-[10px] font-bold text-brand-primary uppercase tracking-wider">Credenciais</h5>
+                    <p class="text-[10px] text-brand-textMuted leading-normal">Emissão do número D-U-N-S legal da empresa (7 a 15 dias úteis).</p>
                   </div>
                 </div>
   
@@ -677,8 +669,8 @@
                 <div class="relative">
                   <div class="absolute -left-[31px] top-0.5 w-3.5 h-3.5 rounded-full bg-brand-primary ring-4 ring-brand-primaryLight"></div>
                   <div class="space-y-1">
-                    <h5 class="text-xs font-bold text-brand-primary uppercase tracking-wider">Triagem Apple App Store</h5>
-                    <p class="text-[11px] text-brand-textMuted leading-relaxed">Revisores físicos realizam testes manuais de todas as funcionalidades de saúde do app (24h a 48h).</p>
+                    <h5 class="text-[10px] font-bold text-brand-primary uppercase tracking-wider">Apple App Store</h5>
+                    <p class="text-[10px] text-brand-textMuted leading-normal">Testes manuais humanos de todas as funções de saúde (24h a 48h).</p>
                   </div>
                 </div>
   
@@ -686,75 +678,80 @@
                 <div class="relative">
                   <div class="absolute -left-[31px] top-0.5 w-3.5 h-3.5 rounded-full bg-brand-primary ring-4 ring-brand-primaryLight"></div>
                   <div class="space-y-1">
-                    <h5 class="text-xs font-bold text-brand-primary uppercase tracking-wider">Homologação Google Play</h5>
-                    <p class="text-[11px] text-brand-textMuted leading-relaxed">Auditoria interna e triagem automatizada contra malware e conformidade de privacidade de dados (3 a 7 dias úteis).</p>
+                    <h5 class="text-[10px] font-bold text-brand-primary uppercase tracking-wider">Google Play</h5>
+                    <p class="text-[10px] text-brand-textMuted leading-normal">Homologação contra malware e conformidade de privacidade (3 a 7 dias úteis).</p>
                   </div>
                 </div>
-  
               </div>
             </div>
             
-            <div class="mt-8 p-4 bg-teal-50/50 rounded-xl border border-teal-100 text-brand-primaryDark">
-              <p class="text-[11px] leading-relaxed font-semibold">
-                💡 Qualquer atualização de bug crítico nos apps nativos deve passar por toda essa análise novamente, demorando de 1 a 3 dias para chegar aos usuários.
-              </p>
+            <div class="mt-4 p-3 bg-teal-50/50 rounded-xl border border-teal-100 text-brand-primaryDark text-[10px] leading-relaxed">
+              💡 Qualquer atualização de bug crítico nos apps nativos deve passar por toda essa análise novamente, demorando de 1 a 3 dias para liberar.
             </div>
           </div>
+        </div>
 
+        <!-- Column 3: Resumo Financeiro (Right) -->
+        <!-- order-1 on mobile (shown first for immediate cost priority), lg:order-none on desktop -->
+        <div class="flex flex-col order-1 lg:order-none h-full">
+          <div class="text-xs font-bold text-brand-primary uppercase tracking-wider mb-1 flex items-center gap-2 lg:hidden">
+            <span class="material-symbols-outlined text-base">price_change</span>
+            Resumo de Custos
+          </div>
+          
           <!-- Resumo Financeiro App Nativo -->
-          <div class="bg-slate-900 text-white p-8 rounded-2xl flex flex-col justify-between shadow-lg shadow-slate-950/10 relative overflow-hidden">
+          <div class="bg-slate-900 text-white p-6 rounded-2xl flex flex-col justify-between shadow-lg shadow-slate-950/10 relative overflow-hidden h-full flex-grow">
             <div class="absolute -top-10 -right-10 w-40 h-40 bg-rose-900/30 rounded-full blur-2xl"></div>
             
-            <div class="relative z-10 space-y-6">
+            <div class="relative z-10 space-y-4">
               <div class="flex items-center gap-3">
-                <span class="material-symbols-outlined text-3xl text-rose-400">price_change</span>
-                <h3 class="text-2xl font-extrabold tracking-tight">Resumo Financeiro (Nativo)</h3>
+                <span class="material-symbols-outlined text-2xl text-rose-400">price_change</span>
+                <h3 class="text-lg font-extrabold tracking-tight">Resumo Financeiro (Nativo)</h3>
               </div>
               
-              <p class="text-xs text-slate-300 leading-relaxed">
-                O modelo de desenvolvimento nativo para lojas envolve maior investimento inicial e taxas de manutenção recorrentes obrigatórias:
+              <p class="text-[11px] text-slate-300 leading-relaxed">
+                Desenvolvimento nativo envolve maior aporte inicial e taxas recorrentes das lojas:
               </p>
               
-              <ul class="space-y-4 border-t border-slate-800 pt-4 text-xs">
+              <ul class="space-y-3.5 border-t border-slate-800 pt-3 text-[11px]">
                 <li class="flex justify-between items-start gap-4">
                   <div>
-                    <span class="block font-bold text-slate-100">Investimento de Engenharia</span>
-                    <span class="text-[10px] text-slate-400">Desenvolvimento, testes, empacotamento e publicação</span>
+                    <span class="block font-bold text-slate-100">Investimento Técnico</span>
+                    <span class="text-[9px] text-slate-400">Codificação, testes e publicação</span>
                   </div>
                   <span class="font-extrabold shrink-0 text-rose-400">R$ 12.000,00</span>
                 </li>
                 <li class="flex justify-between items-start gap-4">
                   <div>
-                    <span class="block font-bold text-slate-100">Taxa Google Play Developer</span>
-                    <span class="text-[10px] text-slate-400">Pagamento único para ativação da conta Android</span>
+                    <span class="block font-bold text-slate-100">Taxa Google Play</span>
+                    <span class="text-[9px] text-slate-400">Pagamento único de registro Android</span>
                   </div>
                   <span class="font-extrabold shrink-0 text-slate-200">US$ 25,00</span>
                 </li>
                 <li class="flex justify-between items-start gap-4">
                   <div>
                     <span class="block font-bold text-rose-300">Anuidade Apple Developer</span>
-                    <span class="text-[10px] text-slate-400">Taxa anual recorrente para manter o app no iOS</span>
+                    <span class="text-[9px] text-slate-400">Taxa anual recorrente obrigatória iOS</span>
                   </div>
                   <span class="font-extrabold shrink-0 text-rose-400">US$ 99,00/ano</span>
                 </li>
                 <li class="flex justify-between items-start gap-4">
                   <div>
-                    <span class="block font-bold text-slate-100">Hospedagem & Banco de Dados</span>
-                    <span class="text-[10px] text-slate-400">Infraestrutura básica em nuvem (Supabase/Cloudflare)</span>
+                    <span class="block font-bold text-slate-100">Infraestrutura em Nuvem</span>
+                    <span class="text-[9px] text-slate-400">Supabase e Cloudflare (inclusos)</span>
                   </div>
                   <span class="font-extrabold shrink-0 text-teal-400">R$ 0,00</span>
                 </li>
               </ul>
             </div>
             
-            <div class="mt-8 border-t border-slate-800 pt-6 relative z-10 space-y-2">
-              <span class="block text-[10px] font-bold uppercase tracking-wider text-rose-400">Custo Total Estimado (1º Ano)</span>
-              <p class="text-[11px] text-slate-400 leading-relaxed font-semibold">
-                Investimento inicial de R$ 12.000,00 somado a taxas das lojas de aproximadamente R$ 700,00 (câmbio flutuante), com custo fixo anual de US$ 99,00 recorrentes para manter a versão iOS ativa.
+            <div class="mt-6 border-t border-slate-800 pt-4 relative z-10 space-y-1.5">
+              <span class="block text-[9px] font-bold uppercase tracking-wider text-rose-400">Custo Estimado (1º Ano)</span>
+              <p class="text-[10px] text-slate-400 leading-relaxed font-semibold">
+                Aporte inicial de R$ 12.000,00 + taxas de ~R$ 700,00 (câmbio), com custo fixo recorrente de US$ 99,00/ano para manter a versão iOS ativa.
               </p>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -862,39 +859,42 @@
             <!-- Week 1 -->
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
               <span class="w-24 text-sm font-bold text-brand-textDark">Semana 1</span>
-              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative overflow-hidden flex items-center">
-                <div class="bg-teal-700/80 text-white h-full w-[25%] flex items-center px-4 text-xs font-semibold rounded-l-xl">
-                  Design & Banco de Dados
-                </div>
+              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative flex items-center overflow-hidden">
+                <div class="bg-teal-750/20 absolute left-0 top-0 h-full w-[25%] rounded-l-xl"></div>
+                <span class="relative z-10 px-4 text-xs font-semibold text-brand-primaryDark">
+                  Design &amp; Banco de Dados
+                </span>
               </div>
             </div>
 
             <!-- Week 2 -->
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
               <span class="w-24 text-sm font-bold text-brand-textDark">Semana 2</span>
-              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative overflow-hidden flex items-center">
-                <div class="bg-teal-700/80 text-white h-full w-[50%] flex items-center px-4 text-xs font-semibold rounded-l-xl">
-                  Portal Cuidador & Mapas
-                </div>
+              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative flex items-center overflow-hidden">
+                <div class="bg-teal-750/20 absolute left-0 top-0 h-full w-[50%] rounded-l-xl"></div>
+                <span class="relative z-10 px-4 text-xs font-semibold text-brand-primaryDark">
+                  Portal Cuidador &amp; Mapas
+                </span>
               </div>
             </div>
 
             <!-- Week 3 -->
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
               <span class="w-24 text-sm font-bold text-brand-textDark">Semana 3</span>
-              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative overflow-hidden flex items-center">
-                <div class="bg-teal-700/80 text-white h-full w-[75%] flex items-center px-4 text-xs font-semibold rounded-l-xl">
-                  Portal Família & Registros
-                </div>
+              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative flex items-center overflow-hidden">
+                <div class="bg-teal-750/20 absolute left-0 top-0 h-full w-[75%] rounded-l-xl"></div>
+                <span class="relative z-10 px-4 text-xs font-semibold text-brand-primaryDark">
+                  Portal Família &amp; Registros
+                </span>
               </div>
             </div>
 
             <!-- Week 4 -->
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
               <span class="w-24 text-sm font-bold text-brand-textDark">Semana 4</span>
-              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative overflow-hidden flex items-center">
+              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative flex items-center overflow-hidden">
                 <div class="bg-brand-primary text-white h-full w-full flex items-center px-4 text-xs font-bold uppercase rounded-xl tracking-wider">
-                  Deploy, Testes de Segurança & Liberação Oficial 🚀
+                  Deploy, Testes de Segurança &amp; Liberação Oficial 🚀
                 </div>
               </div>
             </div>
@@ -985,49 +985,53 @@
             <!-- Phase 1 -->
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
               <span class="w-24 text-sm font-bold text-brand-textDark">Semana 1</span>
-              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative overflow-hidden flex items-center">
-                <div class="bg-teal-700/80 text-white h-full w-[10%] flex items-center px-4 text-xs font-semibold rounded-l-xl">
-                  Levantamento de Documentos & Credenciais da Empresa
-                </div>
+              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative flex items-center overflow-hidden">
+                <div class="bg-teal-750/20 absolute left-0 top-0 h-full w-[10%] rounded-l-xl"></div>
+                <span class="relative z-10 px-4 text-xs font-semibold text-brand-primaryDark">
+                  Levantamento de Documentos &amp; Credenciais da Empresa
+                </span>
               </div>
             </div>
 
             <!-- Phase 2 -->
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
               <span class="w-24 text-sm font-bold text-brand-textDark">Semanas 2-5</span>
-              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative overflow-hidden flex items-center">
-                <div class="bg-teal-700/80 text-white h-full w-[35%] flex items-center px-4 text-xs font-semibold rounded-l-xl">
-                  Design UI/UX, Requisitos & Modelagem de Dados
-                </div>
+              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative flex items-center overflow-hidden">
+                <div class="bg-teal-750/20 absolute left-0 top-0 h-full w-[35%] rounded-l-xl"></div>
+                <span class="relative z-10 px-4 text-xs font-semibold text-brand-primaryDark">
+                  Design UI/UX, Requisitos &amp; Modelagem de Dados
+                </span>
               </div>
             </div>
 
             <!-- Phase 3 -->
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
               <span class="w-24 text-sm font-bold text-brand-textDark">Semanas 6-10</span>
-              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative overflow-hidden flex items-center">
-                <div class="bg-teal-700/80 text-white h-full w-[60%] flex items-center px-4 text-xs font-semibold rounded-l-xl">
-                  Core do App, Portais & Geolocalização Nativa
-                </div>
+              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative flex items-center overflow-hidden">
+                <div class="bg-teal-750/20 absolute left-0 top-0 h-full w-[60%] rounded-l-xl"></div>
+                <span class="relative z-10 px-4 text-xs font-semibold text-brand-primaryDark">
+                  Core do App, Portais &amp; Geolocalização Nativa
+                </span>
               </div>
             </div>
 
             <!-- Phase 4 -->
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
               <span class="w-24 text-sm font-bold text-brand-textDark">Semanas 11-14</span>
-              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative overflow-hidden flex items-center">
-                <div class="bg-teal-700/80 text-white h-full w-[80%] flex items-center px-4 text-xs font-semibold rounded-l-xl">
-                  Diários, Uploads, Push Notifications & Família
-                </div>
+              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative flex items-center overflow-hidden">
+                <div class="bg-teal-750/20 absolute left-0 top-0 h-full w-[80%] rounded-l-xl"></div>
+                <span class="relative z-10 px-4 text-xs font-semibold text-brand-primaryDark">
+                  Diários, Uploads, Push Notifications &amp; Família
+                </span>
               </div>
             </div>
 
             <!-- Phase 5 -->
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
               <span class="w-24 text-sm font-bold text-brand-textDark">Semanas 15-18</span>
-              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative overflow-hidden flex items-center">
+              <div class="flex-grow bg-gray-100 h-9 rounded-xl relative flex items-center overflow-hidden">
                 <div class="bg-brand-primary text-white h-full w-full flex items-center px-4 text-xs font-bold uppercase rounded-xl tracking-wider">
-                  Homologação, Testes de Segurança & Publicação nas Lojas 🚀
+                  Homologação, Testes de Segurança &amp; Publicação nas Lojas 🚀
                 </div>
               </div>
             </div>
@@ -1057,7 +1061,7 @@
             <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight">Decisão Estratégica: WebApp Independente ou App Nativo</h3>
           </div>
           
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-6 border-t border-white/10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 border-t border-white/10">
             <!-- Pillar 1 -->
             <div class="space-y-3 bg-white/5 p-6 rounded-2xl border border-white/10 hover:bg-white/[0.08] transition-all duration-300">
               <div class="flex items-center gap-2 text-brand-primaryLight">
