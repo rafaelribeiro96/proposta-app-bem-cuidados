@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bem Cuidados - Dashboard de Viabilidade</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e6e8ea",
+                    "border-subtle": "#e2e8f0",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#005980",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-surface-variant": "#3f4944",
+                    "on-secondary-container": "#5c647a",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "inverse-primary": "#8bd6b6",
+                    "tertiary": "#00415f",
+                    "on-background": "#191c1e",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-error-container": "#93000a",
+                    "status-critical": "#be123c",
+                    "on-surface": "#191c1e",
+                    "on-tertiary-fixed": "#001e2f",
+                    "secondary-container": "#dae2fd",
+                    "outline-variant": "#bec9c2",
+                    "primary-container": "#065f46",
+                    "tertiary-fixed": "#c9e6ff",
+                    "surface-variant": "#e0e3e5",
+                    "primary-fixed-dim": "#8bd6b6",
+                    "tertiary-fixed-dim": "#89ceff",
+                    "surface-card": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary": "#565e74",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed": "#a6f2d1",
+                    "status-warning": "#d97706",
+                    "on-tertiary-container": "#8bcfff",
+                    "on-primary-fixed": "#002116",
+                    "background": "#f7f9fb",
+                    "surface-dim": "#d8dadc",
+                    "surface": "#f7f9fb",
+                    "primary": "#004532",
+                    "on-tertiary-fixed-variant": "#004c6e",
+                    "on-primary-fixed-variant": "#00513b",
+                    "surface-tint": "#1b6b51",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-bright": "#f7f9fb",
+                    "outline": "#6f7973",
+                    "secondary-fixed": "#dae2fd",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#8bd6b7",
+                    "slate-text": "#0f172a",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-padding": "24px",
+                    "base": "4px",
+                    "margin-desktop": "32px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "section-gap": "40px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .progress-bar-fill { transition: width 1s ease-out; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex flex-col px-margin-desktop bg-surface/80 backdrop-blur-md border-b border-border-subtle shadow-sm">
+<div class="flex justify-between items-center h-16">
+<div class="text-title-lg font-title-lg font-bold text-primary">Bem Cuidados</div>
+<div class="hidden lg:flex gap-6 items-center h-full">
+<button class="nav-link text-body-md font-body-md h-full flex items-center px-2 transition-all" data-label="Visão Geral" onclick="switchTab(0)">Visão Geral</button>
+<button class="nav-link text-body-md font-body-md h-full flex items-center px-2 transition-all" data-label="Imersão WebApp" onclick="switchTab(1)">Imersão WebApp</button>
+<button class="nav-link text-body-md font-body-md h-full flex items-center px-2 transition-all" data-label="Imersão Nativo" onclick="switchTab(2)">Imersão Nativo</button>
+<button class="nav-link text-body-md font-body-md h-full flex items-center px-2 transition-all" data-label="Orçamento &amp; Cronograma" onclick="switchTab(3)">Orçamento &amp; Cronograma</button>
+<button class="nav-link text-body-md font-body-md h-full flex items-center px-2 transition-all" data-label="Recomendação Estratégica" onclick="switchTab(4)">Recomendação Estratégica</button>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-all">download</span>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-label-sm text-label-sm hover:opacity-90 transition-all active:scale-95">Recomendar Fase 1</button>
+</div>
+</div>
+</nav>
+<main class="mt-24 px-margin-mobile md:px-margin-desktop flex-grow max-w-[1440px] mx-auto w-full pb-section-gap">
+<!-- HEADER SECTION -->
+<header class="mb-section-gap flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-slate-text">Análise de Viabilidade &amp; Proposta Comercial</h1>
+<p class="font-body-lg text-body-lg text-secondary mt-2">Plataforma de Serviços e Conexão — Bem Cuidados</p>
+</div>
+<div class="bg-primary-container/10 border border-primary-container/30 p-4 rounded-xl flex items-center gap-4 shadow-sm">
+<div class="bg-primary text-on-primary p-2.5 rounded-full">
+<span class="material-symbols-outlined text-xl">verified</span>
+</div>
+<div>
+<div class="font-label-sm text-[10px] text-primary uppercase tracking-wider">Status Recomendado</div>
+<div class="font-title-lg text-lg text-primary-container font-bold">Preferência: WebApp Fase 1</div>
+</div>
+</div>
+</header>
+<!-- TAB 0: VISÃO GERAL -->
+<section class="tab-content active space-y-gutter" id="tab-0">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- WebApp Card -->
+<div class="bg-surface-card p-8 rounded-xl border border-border-subtle shadow-sm flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div class="p-4 bg-primary/5 rounded-lg text-primary">
+<span class="material-symbols-outlined text-4xl">language</span>
+</div>
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm font-label-sm">Mais Ágil</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-slate-text mb-2">Plataforma WebApp (PWA)</h3>
+<p class="text-body-md font-body-md text-secondary mb-8">Ideal para validação rápida de mercado com custos reduzidos e alta performance. Funciona via link direto no navegador com experiência de App.</p>
+<div class="space-y-6 flex-grow">
+<div class="flex justify-between items-end">
+<span class="text-label-sm font-label-sm text-secondary">Investimento Desenvolvimento</span>
+<span class="text-title-lg font-title-lg text-primary">R$ 5.000</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full progress-bar-fill" style="width: 35%"></div>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-label-sm font-label-sm text-secondary">Tempo de Entrega (MVP)</span>
+<span class="text-title-lg font-title-lg text-slate-text">4 Semanas</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full progress-bar-fill" style="width: 25%"></div>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-label-sm font-label-sm text-secondary">Barreira de Entrada do Usuário</span>
+<span class="text-title-lg font-title-lg text-primary">Zero (Link Direto)</span>
+</div>
+</div>
+</div>
+<!-- Nativo Card -->
+<div class="bg-surface-card p-8 rounded-xl border border-border-subtle shadow-sm flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div class="p-4 bg-secondary-container/20 rounded-lg text-secondary">
+<span class="material-symbols-outlined text-4xl">phone_iphone</span>
+</div>
+<span class="bg-secondary text-on-secondary px-3 py-1 rounded-full text-label-sm font-label-sm">Corporativo</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-slate-text mb-2">Aplicativo Nativo (Stores)</h3>
+<p class="text-body-md font-body-md text-secondary mb-8">Presença consolidada em App Store e Google Play. Indicado para a segunda fase de expansão e autoridade de marca.</p>
+<div class="space-y-6 flex-grow">
+<div class="flex justify-between items-end">
+<span class="text-label-sm font-label-sm text-secondary">Investimento Desenvolvimento</span>
+<span class="text-title-lg font-title-lg text-slate-text">R$ 12.000</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full progress-bar-fill" style="width: 80%"></div>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-label-sm font-label-sm text-secondary">Tempo de Entrega + Burocracia</span>
+<span class="text-title-lg font-title-lg text-slate-text">12-16 Semanas</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full progress-bar-fill" style="width: 90%"></div>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-label-sm font-label-sm text-secondary">Complexidade de Manutenção</span>
+<span class="text-title-lg font-title-lg text-status-critical">Alta</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Módulos do Sistema -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-border-subtle">
+<h3 class="text-headline-md font-headline-md text-slate-text mb-8 text-center">Core de Funcionalidades (MVP)</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white p-6 rounded-lg border border-border-subtle shadow-sm">
+<span class="material-symbols-outlined text-primary mb-4">map</span>
+<h4 class="font-bold mb-2">Check-in Geográfico</h4>
+<p class="text-body-md text-secondary">Mapa interativo para cuidadores com geofencing para garantir presença no local do serviço.</p>
+</div>
+<div class="bg-white p-6 rounded-lg border border-border-subtle shadow-sm">
+<span class="material-symbols-outlined text-primary mb-4">history_edu</span>
+<h4 class="font-bold mb-2">Diário de Cuidado</h4>
+<p class="text-body-md text-secondary">Registro de sinais vitais, medicação e alimentação com upload de fotos clínicas.</p>
+</div>
+<div class="bg-white p-6 rounded-lg border border-border-subtle shadow-sm">
+<span class="material-symbols-outlined text-primary mb-4">family_restroom</span>
+<h4 class="font-bold mb-2">Portal da Família</h4>
+<p class="text-body-md text-secondary">Dashboard para parentes acompanharem em tempo real a evolução e histórico do paciente.</p>
+</div>
+<div class="bg-white p-6 rounded-lg border border-border-subtle shadow-sm">
+<span class="material-symbols-outlined text-primary mb-4">admin_panel_settings</span>
+<h4 class="font-bold mb-2">Painel de Gestão</h4>
+<p class="text-body-md text-secondary">Controle administrativo de escalas, faturamento, auditoria de logs e suporte.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAB 1: IMERSÃO WEBAPP -->
+<section class="tab-content" id="tab-1">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<div class="lg:col-span-2 space-y-gutter">
+<!-- Feature Grid -->
+<div class="bg-surface-card p-card-padding rounded-xl border border-border-subtle">
+<h3 class="font-headline-md text-headline-md text-slate-text mb-6">Por que WebApp na Fase 1?</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+<div>
+<h4 class="font-title-lg text-title-lg text-slate-text">Iteração Imediata</h4>
+<p class="font-body-md text-body-md text-secondary mt-1">Correções e melhorias entram no ar instantaneamente, sem precisar esperar dias pela revisão da Apple/Google.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">share</span>
+<div>
+<h4 class="font-title-lg text-title-lg text-slate-text">Fácil Distribuição</h4>
+<p class="font-body-md text-body-md text-secondary mt-1">Envie o link por WhatsApp para o cuidador e ele já começa a trabalhar. Sem downloads pesados.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Limitations Accordion -->
+<div class="bg-surface-card rounded-xl border border-border-subtle overflow-hidden">
+<div class="p-6 border-b border-border-subtle bg-surface-container-low">
+<h3 class="font-headline-md text-headline-md text-slate-text flex items-center gap-2">
+<span class="material-symbols-outlined text-status-warning">build</span>
+                            Mitigação de Desafios Técnicos
+                        </h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="p-4 bg-background rounded-lg border border-border-subtle">
+<div class="flex justify-between items-center cursor-pointer" onclick="toggleAccordion('acc1')">
+<span class="font-title-lg text-title-lg text-slate-text">Botão de Emergência (Pânico)</span>
+<span class="material-symbols-outlined transition-transform" id="icon-acc1">expand_more</span>
+</div>
+<div class="hidden mt-4 text-body-md text-secondary leading-relaxed" id="acc1">
+                                No WebApp, contornamos a limitação de push background enviando gatilhos via <strong>WhatsApp Business API ou SMS</strong>. O sistema dispara alertas automáticos para a central e família, garantindo que o pedido de ajuda chegue mesmo que o app não esteja aberto na frente do usuário.
+                            </div>
+</div>
+<div class="p-4 bg-background rounded-lg border border-border-subtle">
+<div class="flex justify-between items-center cursor-pointer" onclick="toggleAccordion('acc2')">
+<span class="font-title-lg text-title-lg text-slate-text">Uso da Câmera e GPS</span>
+<span class="material-symbols-outlined transition-transform" id="icon-acc2">expand_more</span>
+</div>
+<div class="hidden mt-4 text-body-md text-secondary leading-relaxed" id="acc2">
+                                PWAs modernos têm acesso pleno à câmera e geolocalização precisa através do navegador. O cuidador pode bater fotos do paciente (curativos, alimentação) e o sistema registra a coordenada exata no momento do registro clínico.
+                            </div>
+</div>
+</div>
+</div>
+<!-- Future Screens Preview -->
+<div class="bg-slate-text text-white p-8 rounded-xl">
+<h4 class="font-title-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed">visibility</span>
+                        Preview Visual do Produto
+                    </h4>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="border border-white/20 p-4 rounded-lg bg-white/5">
+<div class="text-label-sm text-primary-fixed mb-2 uppercase">Interface Cuidador</div>
+<p class="text-xs opacity-70">Checklist diário com ícones grandes, botão de pânico flutuante e timer de jornada.</p>
+</div>
+<div class="border border-white/20 p-4 rounded-lg bg-white/5">
+<div class="text-label-sm text-primary-fixed mb-2 uppercase">Interface Família</div>
+<p class="text-xs opacity-70">Gráficos de evolução de saúde, chat direto e histórico de ocorrências.</p>
+</div>
+<div class="border border-white/20 p-4 rounded-lg bg-white/5">
+<div class="text-label-sm text-primary-fixed mb-2 uppercase">Interface Admin</div>
+<p class="text-xs opacity-70">Mapa de calor com localização de todos os cuidadores ativos e alertas de atraso.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Infra Card -->
+<div class="bg-primary text-on-primary p-8 rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined">cloud</span>
+<h3 class="text-headline-md font-headline-md">Infra Custo Zero</h3>
+</div>
+<p class="text-body-md opacity-90 mb-8">Estratégia para manter o projeto rentável desde o dia 1 utilizando camadas gratuitas robustas:</p>
+<ul class="space-y-6">
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="p-1.5 bg-on-primary/10 rounded">Cloudflare</span>
+<span class="text-xs opacity-70">DNS &amp; Security</span>
+</div>
+<span class="font-bold">R$ 0</span>
+</li>
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="p-1.5 bg-on-primary/10 rounded">Supabase</span>
+<span class="text-xs opacity-70">Banco de Dados</span>
+</div>
+<span class="font-bold">R$ 0</span>
+</li>
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="p-1.5 bg-on-primary/10 rounded">Vercel</span>
+<span class="text-xs opacity-70">Hosting App</span>
+</div>
+<span class="font-bold">R$ 0</span>
+</li>
+</ul>
+</div>
+<div class="mt-12 pt-8 border-t border-on-primary/20">
+<p class="text-label-sm font-label-sm uppercase opacity-70 mb-2">Escala Profissional</p>
+<p class="text-body-md text-primary-fixed">O custo fixo só sobe para ~US$ 25 após ultrapassar 50 mil usuários ativos.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAB 2: IMERSÃO NATIVO -->
+<section class="tab-content" id="tab-2">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Bureaucracy Panel -->
+<div class="bg-surface-card p-card-padding rounded-xl border border-border-subtle shadow-sm">
+<h3 class="font-headline-md text-headline-md text-slate-text mb-8">Requisitos para Stores</h3>
+<div class="space-y-6">
+<div class="p-6 border border-border-subtle rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 bg-slate-text rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined">ios</span>
+</div>
+<h4 class="font-title-lg text-title-lg">Apple Developer Program</h4>
+</div>
+<ul class="text-body-md text-secondary space-y-2 list-disc list-inside">
+<li>Requer CNPJ ativo da clínica/empresa</li>
+<li>Cadastro no sistema D-U-N-S (Pode levar 30 dias)</li>
+<li>Custo: US$ 99/ano (aprox. R$ 550/ano)</li>
+</ul>
+</div>
+<div class="p-6 border border-border-subtle rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined">google</span>
+</div>
+<h4 class="font-title-lg text-title-lg">Google Play Console</h4>
+</div>
+<ul class="text-body-md text-secondary space-y-2 list-disc list-inside">
+<li>Verificação de identidade empresarial</li>
+<li>Taxa única de US$ 25 (aprox. R$ 140)</li>
+<li>Política de privacidade pública obrigatória</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Timeline & Legal -->
+<div class="space-y-gutter">
+<div class="bg-surface-card p-card-padding rounded-xl border border-border-subtle shadow-sm">
+<h3 class="font-title-lg text-title-lg text-slate-text mb-6">Processo de Homologação</h3>
+<div class="relative pl-8 border-l-2 border-surface-container space-y-8">
+<div class="relative">
+<div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-primary ring-4 ring-primary-fixed"></div>
+<h5 class="font-label-sm text-label-sm text-primary uppercase">Fase de Testes Fechados</h5>
+<p class="text-body-md text-secondary">Google exige agora 20 testadores externos por 14 dias antes de liberar produção.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-secondary ring-4 ring-secondary-container"></div>
+<h5 class="font-label-sm text-label-sm text-secondary uppercase">Revisão de UI/UX Apple</h5>
+<p class="text-body-md text-secondary">A Apple rejeita apps que são "apenas sites". Exige animações nativas e alta performance.</p>
+</div>
+</div>
+</div>
+<div class="bg-status-critical/5 p-card-padding rounded-xl border border-status-critical/20 flex gap-4">
+<span class="material-symbols-outlined text-status-critical">gavel</span>
+<div>
+<h4 class="font-title-lg text-title-lg text-status-critical">Complexidade LGPD</h4>
+<p class="font-body-md text-body-md text-secondary mt-1">Exigências rigorosas para exclusão de dados e transparência de coleta. O app deve permitir apagar a conta com um clique.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TAB 3: ORÇAMENTO & CRONOGRAMA -->
+<section class="tab-content" id="tab-3">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-card p-8 rounded-xl border border-border-subtle shadow-sm flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center text-2xl font-bold mb-6">30%</div>
+<h3 class="font-title-lg text-title-lg text-slate-text mb-2">Kick-off &amp; Design</h3>
+<p class="text-body-md text-secondary mb-6">Levantamento de requisitos, prototipação das telas e assinatura do contrato.</p>
+<div class="mt-auto pt-4 border-t border-border-subtle w-full font-bold text-primary">R$ 1.500,00</div>
+</div>
+<div class="bg-surface-card p-8 rounded-xl border border-border-subtle shadow-sm flex flex-col items-center text-center border-primary/30 bg-primary/5">
+<div class="w-16 h-16 bg-primary text-on-primary rounded-full flex items-center justify-center text-2xl font-bold mb-6">30%</div>
+<h3 class="font-title-lg text-title-lg text-slate-text mb-2">Homologação MVP</h3>
+<p class="text-body-md text-secondary mb-6">Interface funcional para testes internos e cadastro dos primeiros 5 cuidadores.</p>
+<div class="mt-auto pt-4 border-t border-border-subtle w-full font-bold text-primary">R$ 1.500,00</div>
+</div>
+<div class="bg-surface-card p-8 rounded-xl border border-border-subtle shadow-sm flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center text-2xl font-bold mb-6">40%</div>
+<h3 class="font-title-lg text-title-lg text-slate-text mb-2">Go-Live &amp; Handover</h3>
+<p class="text-body-md text-secondary mb-6">Deploy em produção, treinamento administrativo e entrega das chaves do sistema.</p>
+<div class="mt-auto pt-4 border-t border-border-subtle w-full font-bold text-primary">R$ 2.000,00</div>
+</div>
+</div>
+<div class="mt-gutter p-8 bg-white rounded-xl border border-border-subtle shadow-sm">
+<h4 class="font-headline-md text-headline-md text-slate-text mb-6">Cronograma Detalhado (WebApp - 4 Semanas)</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<span class="w-24 text-label-sm font-bold text-secondary">Semana 1</span>
+<div class="flex-grow bg-surface-container h-8 rounded relative overflow-hidden">
+<div class="bg-primary-fixed-dim h-full w-[25%] flex items-center px-4 text-[10px] font-bold">Design &amp; DB Schema</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-24 text-label-sm font-bold text-secondary">Semana 2</span>
+<div class="flex-grow bg-surface-container h-8 rounded relative overflow-hidden">
+<div class="bg-primary-fixed-dim h-full w-[50%] flex items-center px-4 text-[10px] font-bold">Portal Cuidador &amp; Mapas</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-24 text-label-sm font-bold text-secondary">Semana 3</span>
+<div class="flex-grow bg-surface-container h-8 rounded relative overflow-hidden">
+<div class="bg-primary-fixed-dim h-full w-[75%] flex items-center px-4 text-[10px] font-bold">Portal Família &amp; Relatórios</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-24 text-label-sm font-bold text-secondary">Semana 4</span>
+<div class="flex-grow bg-surface-container h-8 rounded relative overflow-hidden">
+<div class="bg-primary h-full w-full flex items-center px-4 text-[10px] font-bold text-white uppercase">Deploy &amp; Testes de Estresse</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TAB 4: RECOMENDAÇÃO ESTRATÉGICA -->
+<section class="tab-content" id="tab-4">
+<div class="max-w-4xl mx-auto space-y-gutter">
+<div class="bg-slate-text text-white p-12 rounded-2xl shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-4 mb-8">
+<span class="material-symbols-outlined text-primary-fixed text-5xl">rocket_launch</span>
+<h3 class="text-headline-lg font-headline-lg">Plano de Evolução: Do WebApp ao Nativo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h4 class="text-title-lg font-title-lg text-primary-fixed mb-4">Mês 1-3: Validação &amp; Caixa</h4>
+<p class="text-body-lg opacity-80 leading-relaxed">
+                                Operamos com o WebApp para validar se o modelo de check-in funciona. Corrigimos fluxos com base no uso real dos cuidadores sem custos extras.
+                            </p>
+</div>
+<div>
+<h4 class="text-title-lg font-title-lg text-primary-fixed mb-4">Mês 4+: Consolidação</h4>
+<p class="text-body-lg opacity-80 leading-relaxed">
+                                Com o sistema estável, "encapsulamos" o código em um app nativo para as Stores. O usuário não sente a mudança, os dados são os mesmos, mas a marca ganha autoridade.
+                            </p>
+</div>
+</div>
+<div class="mt-12 p-6 bg-white/10 rounded-xl border border-white/20 flex gap-4">
+<span class="material-symbols-outlined text-primary-fixed shrink-0">check_circle</span>
+<p class="font-body-md">Utilizando o <strong>Supabase</strong> como backend, garantimos que qualquer mudança no front-end (de Web para Mobile) seja transparente para o banco de dados. Zero perda de informação.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-card p-6 rounded-xl border border-border-subtle">
+<h5 class="font-bold text-slate-text mb-4">Próximos Passos Imediatos</h5>
+<ul class="space-y-3 text-body-md text-secondary">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">arrow_forward</span> Definição da identidade visual (Cores/Logo)</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">arrow_forward</span> Escolha do domínio principal (.com.br)</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">arrow_forward</span> Criação da conta Supabase (Gratuita)</li>
+</ul>
+</div>
+<div class="bg-primary-container/10 p-6 rounded-xl border border-primary-container/20">
+<h5 class="font-bold text-primary mb-4">Garantia de Entrega</h5>
+<p class="text-body-md text-primary-container">Suporte técnico de 3 meses após o go-live incluso para ajustes finos e correção de eventuais bugs críticos sem custo adicional.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center border-t border-border-subtle bg-white gap-4">
+<div class="text-label-sm font-label-sm font-semibold text-secondary">© 2024 Bem Cuidados. Proposta válida por 30 dias. Confidencial.</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm" href="#">Suporte Direto</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm" href="#">Documentação Técnica</a>
+</div>
+</footer>
+<script>
+    const tabs = document.querySelectorAll('.tab-content');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    function switchTab(index) {
+        tabs.forEach(tab => tab.classList.remove('active'));
+        navLinks.forEach(link => {
+            link.className = "nav-link text-body-md font-body-md h-full flex items-center px-2 transition-all text-secondary hover:text-primary border-b-2 border-transparent";
+        });
+        
+        tabs[index].classList.add('active');
+        navLinks[index].className = "nav-link text-body-md font-body-md h-full flex items-center px-2 transition-all text-primary font-bold border-b-2 border-primary";
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleAccordion(id) {
+        const content = document.getElementById(id);
+        const icon = document.getElementById('icon-' + id);
+        
+        // Close others
+        const allContents = document.querySelectorAll('[id^="acc"]');
+        allContents.forEach(item => {
+            if(item.id !== id) {
+                item.classList.add('hidden');
+                const otherIcon = document.getElementById('icon-' + item.id);
+                if(otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        content.classList.toggle('hidden');
+        icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    // Initialize
+    switchTab(0);
+</script>
+</body></html>

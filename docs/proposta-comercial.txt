@@ -1,0 +1,45 @@
+﻿PROPOSTA COMERCIAL E ANÃLISE DE VIABILIDADE: PLATAFORMA BEM CUIDADOS
+Prezado(a),
+Apresento o detalhamento de custos, infraestrutura, prazos e formatos para o desenvolvimento da plataforma Bem Cuidados. Este documento demonstra as diferenÃ§as prÃ¡ticas, burocrÃ¡ticas e financeiras entre o formato Aplicativo Web (WebApp) e o formato Aplicativo de Loja Nativo (Android/iOS), servindo como guia estratÃ©gico para o seu negÃ³cio.
+1. OpÃ§Ãµes de Desenvolvimento, Prazos e Investimento
+Abaixo estÃ£o descritas as duas modalidades possÃ­veis para a construÃ§Ã£o da plataforma, com os respectivos valores de investimento em desenvolvimento e os prazos necessÃ¡rios para entrega:
+Modelo de Formato
+	Prazo de Entrega
+	Investimento (MÃ£o de Obra)
+ 
+	Aplicativo Web (WebApp)
+Acessado pelo navegador do celular atravÃ©s de um link, com visual idÃªntico a um app de loja.
+	4 Semanas
+(1 mÃªs)
+	R$ 5.000,00
+Melhor custo-benefÃ­cio para validaÃ§Ã£o rÃ¡pida
+	Aplicativo Nativo (Lojas)
+Disponibilizado para download na Google Play Store (Android) e Apple App Store (iPhone).
+	12 a 16 Semanas
+(3 a 4 meses)
+	R$ 12.000,00
+Aumento de prazo devido a homologaÃ§Ãµes corporativas
+	Nota sobre prazos: O formato nativo exige um perÃ­odo estendido de 12 a 16 semanas devido Ã  carga burocrÃ¡tica severa das lojas, como geraÃ§Ã£o de chaves digitais de seguranÃ§a, adequaÃ§Ã£o estrita de imagens e o tempo de espera das anÃ¡lises e auditorias humanas obrigatÃ³rias do Google e da Apple.
+2. Estrutura e Custos de ManutenÃ§Ã£o (Infraestrutura)
+A arquitetura foi planejada para reduzir ao mÃ¡ximo os custos fixos iniciais do seu negÃ³cio, utilizando o que hÃ¡ de mais moderno em tecnologia de nuvem.
+CenÃ¡rio de ManutenÃ§Ã£o para Aplicativo Web (WebApp) â O Mais EconÃ´mico
+* Registro de DomÃ­nio (ex: www.bemcuidados.com.br): Custo fixo de R$ 40,00 a R$ 70,00 por ANO. Ã o Ãºnico custo obrigatÃ³rio para iniciar.
+* Hospedagem do Sistema (Cloudflare): R$ 0,00 (Gratuito). UtilizaÃ§Ã£o da camada gratuita profissional da Cloudflare (Pages + Workers), que suporta milhares de acessos diÃ¡rios sem custos de banda.
+* Banco de Dados e MÃ­dias (Supabase): R$ 0,00 inicial. O plano gratuito oferece atÃ© 500MB de armazenamento de dados e 1GB para arquivos. Quando a plataforma crescer e acumular muitas fotos de evoluÃ§Ã£o clÃ­nica, serÃ¡ necessÃ¡ria a migraÃ§Ã£o para o plano Pro de US$ 25,00 por mÃªs (cerca de R$ 140,00).
+* Disparo Automatizado do BotÃ£o de EmergÃªncia (Opcional): Para envio de alertas em tempo real direto para o WhatsApp dos familiares, hÃ¡ um custo de integraÃ§Ã£o com API (como Z-API) de aproximadamente R$ 99,00 por mÃªs. Caso o alerta seja apenas por e-mail ou aviso interno na tela, o custo Ã© R$ 0,00.
+Custos Adicionais para Aplicativo Nativo (Lojas)
+* Anuidade Apple Store: US$ 99,00 por ANO (aproximadamente R$ 550,00/ano, obrigatÃ³rio para manter o app disponÃ­vel para iPhones).
+* Taxa de Entrada Google Play: US$ 25,00 (taxa Ãºnica, paga somente na abertura da conta da empresa, cerca de R$ 140,00).
+3. Fluxo de Recursos Essenciais e LimitaÃ§Ãµes do Modelo Web
+O modelo de Aplicativo Web atende perfeitamente ao escopo, mas possui pequenas particularidades devido Ã s regras dos navegadores:
+1. Mapa Interativo de Cuidadores: Funciona perfeitamente atravÃ©s da geolocalizaÃ§Ã£o do navegador do celular.
+2. Envio de Fotos e RelatÃ³rios: Funciona perfeitamente, permitindo abrir a cÃ¢mera do aparelho diretamente pelo site para registrar imagens e relatÃ³rios de saÃºde.
+3. BotÃ£o de EmergÃªncia: Para contornar a limitaÃ§Ã£o de segundo plano do navegador, o clique no botÃ£o ativarÃ¡ um servidor em nuvem independente. Este servidor enviarÃ¡ as notificaÃ§Ãµes de forma externa (WhatsApp/SMS) aos familiares cadastrados.
+4. NotificaÃ§Ãµes no iPhone (iOS): A Apple exige que o usuÃ¡rio salve o atalho do sistema na tela inicial ("Adicionar Ã  Tela de InÃ­cio") para habilitar o recebimento de notificaÃ§Ãµes push na tela de bloqueio. No Android, funciona de forma nativa e imediata.
+4. Forma e CondiÃ§Ãµes de Pagamento
+O pagamento do valor de desenvolvimento serÃ¡ dividido de forma atrelada Ã s entregas parciais do projeto, garantindo transparÃªncia e seguranÃ§a:
+* 30% de Entrada: Pago no ato da assinatura do contrato e inÃ­cio dos trabalhos de arquitetura de dados.
+* 30% IntermediÃ¡rio (ApresentaÃ§Ã£o do MVP): Pago na metade do prazo, mediante a apresentaÃ§Ã£o do protÃ³tipo funcional bÃ¡sico (MVP) contendo as telas de cadastro, login e fluxos iniciais estruturados.
+* 40% na Entrega Final: Pago apÃ³s a homologaÃ§Ã£o completa, testes finais de seguranÃ§a e liberaÃ§Ã£o do link oficial de acesso aos usuÃ¡rios.
+5. RecomendaÃ§Ã£o EstratÃ©gica
+Considerando o perfil do projeto e o objetivo de lanÃ§ar no mercado de forma Ã¡gil e com baixo custo fixo, a forte recomendaÃ§Ã£o tÃ©cnica Ã© iniciar com o Aplicativo Web (OpÃ§Ã£o 1). Em apenas 4 semanas o sistema estarÃ¡ disponÃ­vel para uso, permitindo validar o modelo de negÃ³cios com um investimento seguro de R$ 5.000,00. Posteriormente, a mesma base de dados poderÃ¡ ser utilizada para expandir o produto para as lojas nativas (Fase 2).
