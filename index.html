@@ -91,6 +91,17 @@
     .tab-underline {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    
+    /* Prevent icon fallback text from overflowing container */
+    .material-symbols-outlined {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body class="bg-brand-lightBg text-brand-textDark min-h-screen flex flex-col">
@@ -364,7 +375,7 @@
           <div class="bg-white p-6 rounded-2xl border border-brand-borderSubtle shadow-sm flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-teal-200">
             <div>
               <div class="w-12 h-12 rounded-xl bg-teal-50 text-brand-primary flex items-center justify-center mb-5">
-                <span class="material-symbols-outlined text-2xl font-bold">clinical_trial</span>
+                <span class="material-symbols-outlined text-2xl font-bold">clinical_notes</span>
               </div>
               <h4 class="font-bold text-lg text-brand-textDark mb-2">Diário de Cuidado</h4>
               <p class="text-brand-textMuted text-sm leading-relaxed">
