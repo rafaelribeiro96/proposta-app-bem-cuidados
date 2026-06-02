@@ -1159,6 +1159,11 @@
         targetPanel.classList.add('active');
       }
 
+      // 3.5 Default to WebApp budget if navigating to the 'orcamento' tab
+      if (tabId === 'orcamento') {
+        switchBudget('webapp');
+      }
+
       // 4. Update tabs classes and aria-selected state for Desktop nav
       tabs.forEach(tab => {
         const isTarget = tab.id === 'tab-btn-' + tabId;
